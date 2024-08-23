@@ -24,7 +24,11 @@ export const RightContent = () => {
                 {cart.map(({ product, quantity }) => (
                     <div key={product.id}>
                         <div className="flex gap-5">
-                            <img src={product.img} alt="" className="w-16 h-auto" />
+                            <img
+                                src={product.img}
+                                alt=""
+                                className="w-16 h-auto"
+                            />
                             <div className="flex flex-col justify-between">
                                 <h3>{product.title}</h3>
                                 <div className="flex">
@@ -52,7 +56,12 @@ export const RightContent = () => {
                     <p>{formatToReal(finalPrice + DELIVERY_TAX)}</p>
                 </div>
             </div>
-            <button type="submit" className="uppercase font-bold rounded-md hover:bg-yellow-dark transition-all bg-yellow py-3 text-white">confirmar pedido</button>
+            <button
+                type="submit"
+                className="uppercase font-bold rounded-md hover:bg-yellow-dark transition-all bg-yellow py-3 text-white"
+            >
+                confirmar pedido
+            </button>
         </div>
     );
 };

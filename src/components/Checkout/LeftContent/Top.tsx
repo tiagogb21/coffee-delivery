@@ -1,31 +1,14 @@
-import { InputHTMLAttributes } from "react";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 import pinMap from "../../../assets/icons/pin-map.svg";
+import InputForm from "./InputForm";
+import { AddressSchema } from "../../../schemas/addresSchema";
 
-interface InputFormProps extends InputHTMLAttributes<HTMLInputElement> {
-    width?: "small" | "medium" | "large";
+interface TopProps {
+    register: UseFormRegister<AddressSchema>;
+    errors: FieldErrors<AddressSchema>;
 }
 
-const InputForm = ({
-    width = "large",
-    type = "text",
-    placeholder,
-}: InputFormProps) => {
-    const widthObj = {
-        small: "w-1/3",
-        medium: "w-1/2",
-        large: "w-full",
-    };
-
-    return (
-        <input
-            type={type}
-            placeholder={placeholder}
-            className={`p-3 border border-solid border-base-button bg-base-input rounded-md ${widthObj[width]}`}
-        />
-    );
-};
-
-export const Top = () => {
+export const Top = ({ register, errors } : TopProps) => {
     return (
         <div className="p-10 bg-base-card rounded-md flex flex-col gap-8">
             <div className="flex items-start gap-2">
@@ -40,16 +23,16 @@ export const Top = () => {
                 </div>
             </div>
             <div className="flex flex-col gap-4">
-                <InputForm placeholder="CEP" width="medium" />
-                <InputForm placeholder="Rua" />
+                <InputForm placeholder="CEP" width="medium" inputName="cep" register={register} errors={errors} />
+                <InputForm placeholder="Rua" inputName="street" register={register} errors={errors} />
                 <div className="flex gap-4">
-                    <InputForm placeholder="Número" width="small" />
-                    <InputForm placeholder="Complemento" />
+                    <InputForm placeholder="Número" width="small" inputName="number" register={register} errors={errors} />
+                    <InputForm placeholder="Complemento" inputName="complement" register={register} errors={errors} />
                 </div>
                 <div className="flex gap-4">
-                    <InputForm placeholder="Bairro" />
-                    <InputForm placeholder="Cidade" />
-                    <InputForm placeholder="UF" width="small" />
+                    <InputForm placeholder="Bairro" inputName="neighborhood" register={register} errors={errors} />
+                    <InputForm placeholder="Cidade" inputName="city" register={register} errors={errors} />
+                    <InputForm placeholder="UF" width="small" inputName="state" register={register} errors={errors} />
                 </div>
             </div>
         </div>
