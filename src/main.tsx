@@ -6,11 +6,14 @@ import { router } from "./Router.tsx";
 
 import "./index.css";
 import { ShoppingCartProvider } from "./contexts/cart.tsx";
+import { HelmetProvider } from "react-helmet-async";
 
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
-        <ShoppingCartProvider>
-            <RouterProvider router={router} />
-        </ShoppingCartProvider>
+        <HelmetProvider>
+            <ShoppingCartProvider>
+                <RouterProvider router={router} />
+            </ShoppingCartProvider>
+        </HelmetProvider>
     </StrictMode>
 );

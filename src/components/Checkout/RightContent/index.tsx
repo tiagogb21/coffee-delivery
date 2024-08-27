@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { ShoppingCartContext } from "../../../contexts/cart";
+import emptyCart from "../../../assets/icons/empty-cart.svg";
+import { Link } from "react-router-dom";
 
 const DELIVERY_TAX = 3.5;
 
@@ -17,6 +19,24 @@ export const RightContent = () => {
             currency: "BRL",
         });
     };
+
+    if (cart.length === 0) {
+        return (
+            <div className="flex flex-col gap-4">
+                <h3 className="text-center">
+                    Ainda não há produtos no carrinho
+                </h3>
+                <img src={emptyCart} alt="" />
+                <Link
+                    to="/"
+                    type="submit"
+                    className="w-full uppercase font-bold rounded-md hover:bg-yellow-dark transition-all bg-yellow py-3 text-white text-center"
+                >
+                    escolher café
+                </Link>
+            </div>
+        );
+    }
 
     return (
         <div className="flex flex-col gap-6 bg-base-card p-10 lg:w-[28rem] rounded-md">

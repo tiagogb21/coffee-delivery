@@ -10,7 +10,7 @@ export const Header = () => {
 
     return (
         <header>
-            <div className="container mx-auto flex justify-between px-20 py-8">
+            <div className="container mx-auto flex justify-between px-4 lg:px-20 py-8">
                 <Link to="/">
                     <img src={logo} alt="" />
                 </Link>

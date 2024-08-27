@@ -25,7 +25,7 @@ export const Product = (props: ProductProp) => {
                 {tags.map((tag, index) => (
                     <p
                         key={index}
-                        className="rounded-3xl bg-yellow-light text-yellow-dark px-3 py-1 uppercase text-xs"
+                        className="rounded-3xl bg-yellow-light text-yellow-dark px-3 py-1 uppercase text-[0.625rem]"
                     >
                         {tag}
                     </p>

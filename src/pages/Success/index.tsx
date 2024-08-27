@@ -2,6 +2,7 @@ import delivery from "../../assets/imgs/delivery.png";
 import mapPin from "../../assets/icons/pin.png";
 import clock from "../../assets/icons/clock.png";
 import dollar from "../../assets/icons/dollar.png";
+import { Helmet } from "react-helmet-async";
 
 const address = {
     street: "Rua João Daniel Martinelli",
@@ -16,7 +17,13 @@ const paymentMethod = "Cartão de Crédito";
 export const Success = () => {
     return (
         <main className="">
-            <div className="flex flex-col container mx-auto justify-between px-20 py-8 gap-8">
+            <Helmet>
+                <title>Success | Coffee Delivery</title>
+                <meta name="description" content="Coffee delivery success" />
+                <meta name="keywords" content="coffee, delivery, success" />
+                <meta name="robots" content="success" />
+            </Helmet>
+            <div className="flex flex-col container mx-auto justify-between px-4 lg:px-20 py-8 gap-8">
                 <div className="flex flex-col gap-10">
                     <div>
                         <h1 className="text-3xl font-baloo2 font-bold text-yellow-dark">

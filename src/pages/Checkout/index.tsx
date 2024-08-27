@@ -1,5 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Helmet } from 'react-helmet-async';
 
 import { Bottom } from "../../components/Checkout/LeftContent/Bottom";
 import { Top } from "../../components/Checkout/LeftContent/Top";
@@ -22,9 +23,15 @@ export const Checkout = () => {
 
     return (
         <main className="min-h-screen">
-            <div className="container mx-auto flex flex-col justify-between px-20 py-8">
+            <Helmet>
+                <title>Checkout | Coffee Delivery</title>
+                <meta name="description" content="Coffee delivery checkout" />
+                <meta name="keywords" content="coffee, delivery, checkout" />
+                <meta name="robots" content="checkout" />
+            </Helmet>
+            <div className="container mx-auto flex flex-col justify-between px-4 lg:px-20 py-8">
                 <h1></h1>
-                <form className="flex gap-8" onSubmit={handleSubmit(onSubmit)}>
+                <form className="flex flex-col lg:flex-row gap-8" onSubmit={handleSubmit(onSubmit)}>
                     <div>
                         <h2 className="text-lg font-bold font-baloo2 mb-5">
                             Complete seu pedido

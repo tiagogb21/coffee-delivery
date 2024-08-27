@@ -1,39 +1,13 @@
 import { Control, Controller, FieldErrors } from "react-hook-form";
 
-import creditCard from "../../../assets/icons/credit-card.svg";
-import bank from "../../../assets/icons/bank.svg";
-import money from "../../../assets/icons/money.svg";
 import dollarSign from "../../../assets/icons/dollar-sign.svg";
 import { AddressSchema } from "../../../schemas/addresSchema";
-
-interface ICardMethods {
-    id: string;
-    icon: string;
-    label: string;
-}
+import { cardMethods } from "../../../utils/constants/cardMethods";
 
 interface BottomProps {
     control: Control<AddressSchema>;
     errors: FieldErrors<AddressSchema>;
 }
-
-const cardMethods: ICardMethods[] = [
-    {
-        id: "credit-card",
-        icon: creditCard,
-        label: "cartão de crédito",
-    },
-    {
-        id: "debit-card",
-        icon: bank,
-        label: "cartão de débito",
-    },
-    {
-        id: "money",
-        icon: money,
-        label: "dinheiro",
-    },
-];
 
 export const Bottom = ({ control, errors } : BottomProps) => {
     return (
@@ -46,9 +20,9 @@ export const Bottom = ({ control, errors } : BottomProps) => {
                 </div>
             </div>
             <p className="text-sm text-red-500">{errors.paymentMethod?.message}</p>
-            <div className="flex justify-between gap-3">
+            <div className="flex flex-col lg:flex-row justify-between gap-3">
                 {cardMethods.map(({ id, icon, label }) => (
-                    <div key={id}>
+                    <div key={id} className="">
                         <Controller
                             control={control}
                             name="paymentMethod"
