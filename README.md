@@ -65,7 +65,7 @@ O layout da aplicação foi desenvolvido seguindo o design fornecido no Figma. P
 
 ![Home](./src/assets/imgs/home.png)
 
-![Checkout](./src/assets/imgs/checkout.png)
+![Checkout](./src/assets/icons/checkout.png)
 
 ![Success](./src/assets/imgs/success.png)
 
