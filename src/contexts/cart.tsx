@@ -1,12 +1,14 @@
 import { createContext, ReactNode, useEffect, useReducer } from "react";
 import { ICoffee } from "../interfaces/ICoffee";
-import { addToCart, removeFromCart, clearCart } from "../reducers/cart/actions";
+import { addToCart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart } from "../reducers/cart/actions";
 import { cartReducer, CartItem } from "../reducers/cart/reducer";
 
 interface CyclesContextType {
     cart: CartItem[];
     totalAmount: number;
-    addItemToCart: (data: ICoffee) => void;
+    increaseQuantityItem: (id: string) => void;
+    decreaseQuantityItem: (id: string) => void;
+    addItemToCart: (data: ICoffee, quantity: number) => void;
     removeItemFromCart: (id: string) => void;
     clearCartItems: () => void;
 }
@@ -38,8 +40,16 @@ export const ShoppingCartProvider = ({ children }: CartContextProviderProps) => 
 
     const { cart, totalAmount } = cartState;
 
-    function addItemToCart(data: ICoffee) {
-        dispatch(addToCart(data));
+    function increaseQuantityItem(id: string) {
+        dispatch(increaseQuantity(id));
+    }
+
+    function decreaseQuantityItem(id: string) {
+        dispatch(decreaseQuantity(id));
+    }
+
+    function addItemToCart(data: ICoffee, quantity: number) {
+        dispatch(addToCart(data, quantity));
     }
 
     function removeItemFromCart(id: string) {
@@ -60,6 +70,8 @@ export const ShoppingCartProvider = ({ children }: CartContextProviderProps) => 
             value={{
                 cart,
                 totalAmount,
+                increaseQuantityItem,
+                decreaseQuantityItem,
                 addItemToCart,
                 removeItemFromCart,
                 clearCartItems,

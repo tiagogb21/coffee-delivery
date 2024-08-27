@@ -8,6 +8,12 @@ import { Link } from "react-router-dom";
 export const Header = () => {
     const {cart} = useContext(ShoppingCartContext);
 
+    const quantity = cart.length === 0 ? 0 : cart.reduce((acc, curr) => {
+        return acc + curr.quantity;
+    }, 0);
+
+    console.log(cart)
+
     return (
         <header>
             <div className="container mx-auto flex justify-between px-4 lg:px-20 py-8">
@@ -21,7 +27,7 @@ export const Header = () => {
                     </li>
                     <li>
                         <Link to="/checkout" className="flex p-3 rounded-md relative bg-yellow-light">
-                            <span className="w-6 h-6 flex items-center justify-center rounded-full absolute -top-3 -right-3 bg-yellow-dark text-yellow-light">{cart?.length}</span>
+                            <span className="w-6 h-6 flex items-center justify-center rounded-full absolute -top-3 -right-3 bg-yellow-dark text-yellow-light">{quantity}</span>
                             <img src={shoppingCart} alt="go to shopping cart" />
                         </Link>
                     </li>

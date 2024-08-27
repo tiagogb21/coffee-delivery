@@ -14,9 +14,7 @@ export const Home = () => {
             </Helmet>
             <div className="flex flex-col container mx-auto justify-between px-4 lg:px-20 py-8 gap-8">
                 <TopContent />
-                {categories.map(({ title, items }) => (
-                    <Shelf title={title} items={items} />
-                ))}
+                <Shelf items={categories} />
             </div>
         </main>
     );

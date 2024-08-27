@@ -1,42 +1,5 @@
 import coffee from "../../../assets/imgs/coffee.png";
-import cartFill from "../../../assets/icons/shopping-cart-fill.png";
-import timerFill from "../../../assets/icons/timer-fill.png";
-import packageFill from "../../../assets/icons/package-fill.png";
-import coffeeFill from "../../../assets/icons/coffee-fill.png";
-
-interface ListInfo {
-    id: number;
-    img: string;
-    text: string;
-    color: string;
-}
-
-const listInfo: ListInfo[] = [
-    {
-        id: 1,
-        img: cartFill,
-        text: "Compra simples e segura",
-        color: 'bg-yellow-dark',
-    },
-    {
-        id: 2,
-        img: packageFill,
-        text: "Embalagem mantém o café intacto",
-        color: 'bg-yellow',
-    },
-    {
-        id: 3,
-        img: timerFill,
-        text: "Entrega rápida e rastreada",
-        color: 'bg-base-text',
-    },
-    {
-        id: 4,
-        img: coffeeFill,
-        text: "O café chega fresquinho até você",
-        color: 'bg-purple',
-    },
-];
+import { listInfo } from "../../../utils/constants/listInfo";
 
 const ListInfo = () => {
     return (
@@ -55,8 +18,8 @@ const ListInfo = () => {
 
 export const TopContent = () => {
     return (
-        <div className="flex flex-col my-14 lg:flex-row">
-            <div className="flex flex-col justify-between">
+        <div className="flex flex-col my-14 lg:flex-row items-center gap-10">
+            <div className="flex flex-col justify-between gap-10">
                 <div className="flex flex-col gap-4">
                     <h1 className="font-baloo2 font-bold text-5xl">
                         Encontre o café perfeito para qualquer hora do dia

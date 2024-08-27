@@ -39,7 +39,7 @@ export const ButtonControl = (props: ICoffee) => {
                     <img src={plus} alt="increase quantity" />
                 </button>
             </div>
-            <button type="button" className="bg-purple-dark p-2 rounded-md" onClick={() => addItemToCart(props)}>
+            <button type="button" className="bg-purple-dark p-2 rounded-md" onClick={() => addItemToCart(props, quantity)}>
                 <img
                     src={shoppingCart}
                     alt="shopping cart"

@@ -2,11 +2,17 @@ import { useContext } from "react";
 import { ShoppingCartContext } from "../../../contexts/cart";
 import emptyCart from "../../../assets/icons/empty-cart.svg";
 import { Link } from "react-router-dom";
+import minus from "../../../assets/icons/minus-bold.png";
+import plus from "../../../assets/icons/plus-bold.png";
+import garbage from "../../../assets/icons/garbage.svg";
 
 const DELIVERY_TAX = 3.5;
 
 export const RightContent = () => {
     const { cart } = useContext(ShoppingCartContext);
+
+    const { increaseQuantityItem, decreaseQuantityItem, removeItemFromCart } =
+        useContext(ShoppingCartContext);
 
     const finalPrice = cart.reduce((acc, curr) => {
         acc += parseFloat(curr.product.price) * curr.quantity;
@@ -26,7 +32,7 @@ export const RightContent = () => {
                 <h3 className="text-center">
                     Ainda não há produtos no carrinho
                 </h3>
-                <img src={emptyCart} alt="" />
+                <img src={emptyCart} className="w-72 h-auto" alt="" />
                 <Link
                     to="/"
                     type="submit"
@@ -51,12 +57,56 @@ export const RightContent = () => {
                             />
                             <div className="flex flex-col justify-between">
                                 <h3>{product.title}</h3>
-                                <div className="flex">
-                                    <button>{quantity}</button>
-                                    <button>REMOVER</button>
+                                <div className="flex items-center gap-2">
+                                    <div className="p-2 rounded-md flex bg-base-button items-center gap-2">
+                                        <button
+                                            type="button"
+                                            onClick={() =>
+                                                decreaseQuantityItem(
+                                                    String(product.id)
+                                                )
+                                            }
+                                        >
+                                            <img
+                                                className="w-4 h-auto text-purple"
+                                                src={minus}
+                                                alt=""
+                                            />
+                                        </button>
+                                        {quantity}
+                                        <button
+                                            type="button"
+                                            className=""
+                                            onClick={() =>
+                                                increaseQuantityItem(
+                                                    String(product.id)
+                                                )
+                                            }
+                                        >
+                                            <img
+                                                className="w-4 h-auto text-purple"
+                                                src={plus}
+                                                alt=""
+                                            />
+                                        </button>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={() => removeItemFromCart(String(product.id))}
+                                        className="p-3 bg-base-button rounded-md flex items-center text-xs gap-1"
+                                    >
+                                        <img
+                                            className="w-4 h-auto text-purple"
+                                            src={garbage}
+                                            alt=""
+                                        />
+                                        REMOVER
+                                    </button>
                                 </div>
                             </div>
-                            <p>{formatToReal(parseFloat(product.price))}</p>
+                            <p className="font-bold">
+                                {formatToReal(parseFloat(product.price))}
+                            </p>
                         </div>
                         <hr className="my-6" />
                     </div>
